@@ -1,18 +1,35 @@
 class PowersController < ApplicationController
-    def show
+
+rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
+    def index
 
         power = Power.all
         render json: power
     end
 
-    def index
+    def show
         power = find_power
         render json: power
+    end
+
+    def update
+        power = find_power
+        power.update!(power_params)
+
     end
 
 
     private
     def find_power
-        power = Power.find(params[:id])
+        Power.find(params[:id])
+    end
+
+    def power_params
+        params.permit(:name,:description)
+    end
+
+    def record_not_found_response
+
+        render json: {error:"Record not found"},status: :not_found
     end
 end

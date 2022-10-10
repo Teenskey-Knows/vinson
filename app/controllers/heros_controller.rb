@@ -1,4 +1,6 @@
 class HerosController < ApplicationController
+
+    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
 
 
@@ -19,5 +21,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
 
       def record_not_found_response
         render json: {error: "Record not found"},status: :not_found
+      end
+
+      def unprocessable_entity_response(invalid)
+        render json: {errors.invalid.records.full_messages}, status: :unprocessable_entity
       end
 end
