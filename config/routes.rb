@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #Heroes
+  get '/heroes', to: 'heros#index'
+  get '/heroes/:id', to: "heros#show"
+
+  #Power
+  get '/powers', to: 'powers#index'
+  get '/powers/:id', to: 'powers#show'
+
+
+
 end
