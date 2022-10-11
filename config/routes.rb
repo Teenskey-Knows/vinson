@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   put '/powers/:id', to: 'powers#update'
 
   #HeroPower
-
+  get 'heropowers', to: 'hero_powers#index'
   post '/heropower', to: 'hero_powers#create'
 
 
