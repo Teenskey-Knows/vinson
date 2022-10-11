@@ -1,8 +1,12 @@
 class PowersController < ApplicationController
+  
 
-rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
+
+
+    
     def index
-
         power = Power.all
         render json: power
     end
@@ -15,6 +19,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
     def update
         power = find_power
         power.update!(power_params)
+        render json: power, status: :accepted
 
     end
 
@@ -32,4 +37,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
 
         render json: {error:"Record not found"},status: :not_found
     end
+
+    # def unprocessable_entity_response(invalid)
+    #     render json: {errors.invalid.records.full_messages},status: :unprocessable_entity
+    # end
 end
