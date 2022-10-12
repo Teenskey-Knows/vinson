@@ -1,22 +1,22 @@
-puts "Seeding has begun"
+puts "Seeding data"
 
 
-heros1 =Hero.create(name:"Mike Tyson",
-    super_name:"Iron Mike")
+cena =Hero.create(name:"Bukkati",
+    super_name:"The demon slayer")
     
-heros2 =Hero.create(name:"Michael Jackson",
-super_name:"King of pop") 
+singer =Hero.create(name:"Sho Madjozi",
+super_name:"South Gal") 
 
-powers1 =Power.create(name:"Fighter",
-description:"Fights all villains with great artistry")
+song =Power.create(name:"Magic hand",
+description:"Fights with all vigor and power in the world.If you need a superhero chose this one over here.That's whatsapp.")
 
-powers2 =Power.create(name:"Singer",
-description:"Sings like crazy")
-
-
-hero_power1=HeroPower.create(strength:"Puncher",hero_id:heros1.id,power_id:powers1.id)
-
-hero_power2=HeroPower.create(strength:"Musical cords",hero_id:heros2.id,power_id:powers2.id)
+songstu =Power.create(name:"Vocal Cord",
+description:"The musical cords can inspire you to sing too.The artistry is a gem to behold.Do not sleep on it.")
 
 
-puts "Seed has ended"
+heroPower=HeroPower.create(strength:"Strong",hero_id:cena.id,power_id:song.id)
+
+heroPowerres=HeroPower.create(strength:"Average",hero_id:singer.id,power_id:songstu.id)
+
+
+puts "Completion of data seed"
